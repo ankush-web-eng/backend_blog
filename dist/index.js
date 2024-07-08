@@ -50,12 +50,12 @@ app.use((0, cors_1.default)({
     credentials: true
 }));
 app.use(express_1.default.json());
-app.get("/test", function (req, res) {
+app.get("/", function (req, res) {
     res.json({
-        message: "Hello from the serverless function"
+        message: "Hello, I am Ankush! And this is my official page for APIs."
     });
 });
-app.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+app.get("/blog", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var response, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -99,6 +99,97 @@ app.get("/blog/:id", function (req, res) { return __awaiter(void 0, void 0, void
                 res.status(500).send('Error fetching data from external API');
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
+        }
+    });
+}); });
+app.get("/project", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var response, error_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, axios_1.default.get("".concat(process.env.URL, "/api/projects/getProjects"))];
+            case 1:
+                response = _a.sent();
+                res.json({
+                    message: response.data
+                });
+                return [3 /*break*/, 3];
+            case 2:
+                error_3 = _a.sent();
+                console.error(error_3);
+                res.status(500).send('Error fetching data from external API');
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+app.get("/project/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, response, error_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                id = req.params.id;
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, axios_1.default.get("".concat(process.env.URL, "/api/projects/getProject/").concat(id))];
+            case 2:
+                response = _a.sent();
+                res.json({
+                    message: response.data
+                });
+                return [3 /*break*/, 4];
+            case 3:
+                error_4 = _a.sent();
+                console.error(error_4);
+                res.status(500).send('Error fetching data from external API');
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); });
+app.get("/link", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var response, error_5;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, axios_1.default.get("".concat(process.env.URL, "/api/projects/getlinks"))];
+            case 1:
+                response = _a.sent();
+                res.json({
+                    message: response.data
+                });
+                return [3 /*break*/, 3];
+            case 2:
+                error_5 = _a.sent();
+                console.error(error_5);
+                res.status(500).send('Error fetching data from external API');
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+app.get("/skill", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var response, error_6;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, axios_1.default.get("".concat(process.env.URL, "/api/skill/getskills"))];
+            case 1:
+                response = _a.sent();
+                res.json({
+                    message: response.data
+                });
+                return [3 /*break*/, 3];
+            case 2:
+                error_6 = _a.sent();
+                console.error(error_6);
+                res.status(500).send('Error fetching data from external API');
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); });
